@@ -86,6 +86,8 @@ def main():
                 launch_neofetch()
             elif command.lower() == 'msfconsole':
                 launch_msfconsole()
+            elif command.lower() == 'ls':
+                print("Dosyaların Bu Terminalde Gözükmez.")
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
