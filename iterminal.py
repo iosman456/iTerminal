@@ -25,6 +25,7 @@ def main():
             if command.lower() == 'exit':
                 print("Exiting iTerminal...")
                 break
+                
             elif command.lower() == 'clear':
                 clear_terminal()
             elif command.lower() == 'help':
