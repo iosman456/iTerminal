@@ -39,6 +39,19 @@ def launch_msfconsole():
     except FileNotFoundError:
         print("msfconsole not found. Please make sure Metasploit is installed and in your PATH.")
 
+# Yeni siber güvenlik komutları
+def launch_nmap():
+    try:
+        subprocess.run("nmap", check=True)
+    except FileNotFoundError:
+        print("nmap not found. Please make sure nmap is installed and in your PATH.")
+        
+def launch_hydra():
+    try:
+        subprocess.run("hydra", check=True)
+    except FileNotFoundError:
+        print("hydra not found. Please make sure hydra is installed and in your PATH.")
+
 def get_credentials():
     username = input("Username: ")
     password = input("Password: ")
@@ -69,6 +82,9 @@ def main():
                 print("  exit: Exit the terminal")
                 print("  pwd: Print the current working directory")
                 print("  home: Print the home directory path")
+                print("  msfconsole: Launch Metasploit console")
+                print("  nmap: Launch Nmap")
+                print("  hydra: Launch Hydra")
             elif command.lower() == 'pwd':
                 print(os.getcwd())
             elif command.lower() == 'home':
@@ -82,6 +98,12 @@ def main():
                     print("cd: missing operand")
             elif command.strip() == '':
                 continue
+            elif command.lower() == 'msfconsole':
+                launch_msfconsole()
+            elif command.lower() == 'nmap':
+                launch_nmap()
+            elif command.lower() == 'hydra':
+                launch_hydra()
             else:
                 execute_command(command)
         except KeyboardInterrupt:
