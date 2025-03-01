@@ -33,6 +33,12 @@ def launch_neofetch():
     except FileNotFoundError:
         print("neofetch not found. Please make sure neofetch is installed and in your PATH.")
 
+def launch_msfconsole():
+    try:
+        subprocess.run("msfconsole", check=True)
+    except FileNotFoundError:
+        print("msfconsole not found. Please make sure Metasploit is installed and in your PATH.")
+
 def main():
     clear_terminal()
     print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
@@ -54,6 +60,7 @@ def main():
                 print("  cmatrix: Launch cmatrix")
                 print("  pip: Launch pip")
                 print("  neofetch: Launch neofetch")
+                print("  msfconsole: Launch Metasploit")
                 print("  ls: List directory contents")
                 print("  cd: Change directory")
                 print("  mkdir: Create a directory")
@@ -77,6 +84,8 @@ def main():
                 launch_pip()
             elif command.lower() == 'neofetch':
                 launch_neofetch()
+            elif command.lower() == 'msfconsole':
+                launch_msfconsole()
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
