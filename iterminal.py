@@ -8,9 +8,11 @@ import time
 from termcolor import colored
 
 def clear_terminal():
+    """Clear the terminal screen."""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def execute_command(command):
+    """Execute a shell command and print the output or error."""
     try:
         result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         print(result.stdout)
@@ -18,43 +20,49 @@ def execute_command(command):
         print(e.stderr)
 
 def launch_cmatrix():
+    """Launch cmatrix program."""
     try:
         subprocess.run("cmatrix", check=True)
     except FileNotFoundError:
         print("cmatrix not found. Please make sure cmatrix is installed and in your PATH.")
 
 def launch_pip():
+    """Launch pip program."""
     try:
         subprocess.run("pip", check=True)
     except FileNotFoundError:
         print("pip not found. Please make sure pip is installed and in your PATH.")
 
 def launch_neofetch():
+    """Launch neofetch program."""
     try:
         subprocess.run("neofetch", check=True)
     except FileNotFoundError:
         print("neofetch not found. Please make sure neofetch is installed and in your PATH.")
 
 def launch_msfconsole():
+    """Launch Metasploit console."""
     try:
         subprocess.run("msfconsole", check=True)
     except FileNotFoundError:
         print("msfconsole not found. Please make sure Metasploit is installed and in your PATH.")
 
-# Yeni siber güvenlik komutları
 def launch_nmap():
+    """Launch Nmap scanner."""
     try:
         subprocess.run("nmap", check=True)
     except FileNotFoundError:
         print("nmap not found. Please make sure nmap is installed and in your PATH.")
-        
+
 def launch_hydra():
+    """Launch Hydra brute force tool."""
     try:
         subprocess.run("hydra", check=True)
     except FileNotFoundError:
         print("hydra not found. Please make sure hydra is installed and in your PATH.")
 
 def get_credentials():
+    """Prompt the user for username and password."""
     username = input("Username: ")
     password = input("Password: ")
     if username == 'root' and password == 'root':
@@ -64,12 +72,14 @@ def get_credentials():
         sys.exit(1)
 
 def rainbow_text(text):
+    """Print text in rainbow colors."""
     colors = ['red', 'yellow', 'green', 'cyan', 'blue', 'magenta']
     for i in range(len(text)):
         print(colored(text[i], colors[i % len(colors)]), end='')
     print()
 
 def main():
+    """Main function to run the iTerminal program."""
     clear_terminal()
     username, password = get_credentials()
     os.environ['PS1'] = f"{username}@iTerminal:~$ "
