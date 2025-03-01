@@ -42,7 +42,11 @@ def launch_msfconsole():
 def get_credentials():
     username = input("Username: ")
     password = input("Password: ")
-    return username, password
+    if username == 'root' and password == 'root':
+        return username, password
+    else:
+        print("Invalid credentials.")
+        sys.exit(1)
 
 def main():
     clear_terminal()
