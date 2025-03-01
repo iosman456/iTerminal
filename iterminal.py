@@ -15,6 +15,12 @@ def execute_command(command):
     except subprocess.CalledProcessError as e:
         print(e.stderr)
 
+def launch_cmatrix():
+    try:
+        subprocess.run("cmatrix", check=True)
+    except FileNotFoundError:
+        print("cmatrix not found. Please make sure cmatrix is installed and in your PATH.")
+
 def main():
     clear_terminal()
     print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
@@ -33,10 +39,30 @@ def main():
                 print("  exit: Exit the terminal")
                 print("  pwd: Print the current working directory")
                 print("  home: Print the home directory path")
+                print("  cmatrix: Launch cmatrix")
+                print("  ls: List directory contents")
+                print("  cd: Change directory")
+                print("  mkdir: Create a directory")
+                print("  touch: Create a file")
+                print("  uptime: Show system uptime")
+                print("  df: Show disk space usage")
+                print("  cat: Concatenate and display file content")
+                print("  echo: Display a line of text")
+                print("  ping: Send ICMP ECHO_REQUEST to network hosts")
+                print("  curl: Transfer data from or to a server")
             elif command.lower() == 'pwd':
                 print(os.getcwd())
             elif command.lower() == 'home':
                 print(os.path.expanduser("~"))
+            elif command.lower() == 'cmatrix':
+                launch_cmatrix()
+            elif command.startswith('cd '):
+                try:
+                    os.chdir(command.split(' ')[1])
+                except FileNotFoundError as e:
+                    print(f"cd: {e}")
+                except IndexError:
+                    print("cd: missing operand")
             elif command.strip() == '':
                 continue
             else:
