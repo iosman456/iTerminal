@@ -39,13 +39,21 @@ def launch_msfconsole():
     except FileNotFoundError:
         print("msfconsole not found. Please make sure Metasploit is installed and in your PATH.")
 
+def get_credentials():
+    username = input("Username: ")
+    password = input("Password: ")
+    return username, password
+
 def main():
     clear_terminal()
+    username, password = get_credentials()
+    os.environ['PS1'] = f"{username}@iTerminal:~$ "
+
     print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
 
     while True:
         try:
-            command = input("iTerminal> ")
+            command = input(f"{username}@iTerminal> ")
             if command.lower() == 'exit':
                 print("Exiting iTerminal...")
                 break
@@ -86,8 +94,6 @@ def main():
                 launch_neofetch()
             elif command.lower() == 'msfconsole':
                 launch_msfconsole()
-            elif command.lower() == 'ls':
-                print("Dosyaların Bu Terminalde Gözükmez.")
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
