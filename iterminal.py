@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -25,13 +25,18 @@ def main():
             if command.lower() == 'exit':
                 print("Exiting iTerminal...")
                 break
-                
             elif command.lower() == 'clear':
                 clear_terminal()
             elif command.lower() == 'help':
                 print("Available commands:")
                 print("  clear: Clear the terminal screen")
                 print("  exit: Exit the terminal")
+                print("  pwd: Print the current working directory")
+                print("  home: Print the home directory path")
+            elif command.lower() == 'pwd':
+                print(os.getcwd())
+            elif command.lower() == 'home':
+                print(os.path.expanduser("~"))
             elif command.strip() == '':
                 continue
             else:
