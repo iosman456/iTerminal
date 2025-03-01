@@ -4,6 +4,8 @@ import os
 import sys
 import subprocess
 import readline
+import time
+from termcolor import colored
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -61,18 +63,24 @@ def get_credentials():
         print("Invalid credentials.")
         sys.exit(1)
 
+def rainbow_text(text):
+    colors = ['red', 'yellow', 'green', 'cyan', 'blue', 'magenta']
+    for i in range(len(text)):
+        print(colored(text[i], colors[i % len(colors)]), end='')
+    print()
+
 def main():
     clear_terminal()
     username, password = get_credentials()
     os.environ['PS1'] = f"{username}@iTerminal:~$ "
 
-    print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
+    rainbow_text("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
 
     while True:
         try:
             command = input(f"{username}@iTerminal> ")
             if command.lower() == 'exit':
-                print("Exiting iTerminal...")
+                rainbow_text("Exiting iTerminal...")
                 break
             elif command.lower() == 'clear':
                 clear_terminal()
