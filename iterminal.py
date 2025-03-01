@@ -65,35 +65,10 @@ def main():
                 print("  exit: Exit the terminal")
                 print("  pwd: Print the current working directory")
                 print("  home: Print the home directory path")
-                print("  cmatrix: Launch cmatrix")
-                print("  pip: Launch pip")
-                print("  neofetch: Launch neofetch")
-                print("  msfconsole: Launch Metasploit")
-                print("  ls: List directory contents")
-                print("  cd: Change directory")
-                print("  mkdir: Create a directory")
-                print("  touch: Create a file")
-                print("  uptime: Show system uptime")
-                print("  df: Show disk space usage")
-                print("  cat: Concatenate and display file content")
-                print("  echo: Display a line of text")
-                print("  ping: Send ICMP ECHO_REQUEST to network hosts")
-                print("  curl: Transfer data from or to a server")
-                print("  nmap: Network exploration tool and security/port scanner")
-                print("  wireshark: Network protocol analyzer")
-                print("  metasploit: Penetration testing framework")
             elif command.lower() == 'pwd':
                 print(os.getcwd())
             elif command.lower() == 'home':
                 print(os.path.expanduser("~"))
-            elif command.lower() == 'cmatrix':
-                launch_cmatrix()
-            elif command.lower() == 'pip':
-                launch_pip()
-            elif command.lower() == 'neofetch':
-                launch_neofetch()
-            elif command.lower() == 'msfconsole':
-                launch_msfconsole()
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
