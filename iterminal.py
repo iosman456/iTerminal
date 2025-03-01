@@ -27,6 +27,12 @@ def launch_pip():
     except FileNotFoundError:
         print("pip not found. Please make sure pip is installed and in your PATH.")
 
+def launch_neofetch():
+    try:
+        subprocess.run("neofetch", check=True)
+    except FileNotFoundError:
+        print("neofetch not found. Please make sure neofetch is installed and in your PATH.")
+
 def main():
     clear_terminal()
     print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
@@ -47,6 +53,7 @@ def main():
                 print("  home: Print the home directory path")
                 print("  cmatrix: Launch cmatrix")
                 print("  pip: Launch pip")
+                print("  neofetch: Launch neofetch")
                 print("  ls: List directory contents")
                 print("  cd: Change directory")
                 print("  mkdir: Create a directory")
@@ -68,6 +75,8 @@ def main():
                 launch_cmatrix()
             elif command.lower() == 'pip':
                 launch_pip()
+            elif command.lower() == 'neofetch':
+                launch_neofetch()
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
