@@ -21,6 +21,12 @@ def launch_cmatrix():
     except FileNotFoundError:
         print("cmatrix not found. Please make sure cmatrix is installed and in your PATH.")
 
+def launch_pip():
+    try:
+        subprocess.run("pip", check=True)
+    except FileNotFoundError:
+        print("pip not found. Please make sure pip is installed and in your PATH.")
+
 def main():
     clear_terminal()
     print("Welcome to iTerminal! Type 'exit' to quit or 'help' for a list of commands.")
@@ -40,6 +46,7 @@ def main():
                 print("  pwd: Print the current working directory")
                 print("  home: Print the home directory path")
                 print("  cmatrix: Launch cmatrix")
+                print("  pip: Launch pip")
                 print("  ls: List directory contents")
                 print("  cd: Change directory")
                 print("  mkdir: Create a directory")
@@ -50,12 +57,17 @@ def main():
                 print("  echo: Display a line of text")
                 print("  ping: Send ICMP ECHO_REQUEST to network hosts")
                 print("  curl: Transfer data from or to a server")
+                print("  nmap: Network exploration tool and security/port scanner")
+                print("  wireshark: Network protocol analyzer")
+                print("  metasploit: Penetration testing framework")
             elif command.lower() == 'pwd':
                 print(os.getcwd())
             elif command.lower() == 'home':
                 print(os.path.expanduser("~"))
             elif command.lower() == 'cmatrix':
                 launch_cmatrix()
+            elif command.lower() == 'pip':
+                launch_pip()
             elif command.startswith('cd '):
                 try:
                     os.chdir(command.split(' ')[1])
